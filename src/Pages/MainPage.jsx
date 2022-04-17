@@ -5,9 +5,12 @@ import CoinList from "../components/CoinList";
 function MainPage() {
     const [coinList, setCoinList] = useState([])
 
-    useEffect(async () => {
-        let names = await MyRequest.getAllNames()
-        setCoinList(names.all_names)
+    useEffect( () => {
+        async function fetchData() {
+            let names = await MyRequest.getAllNames()
+            setCoinList(names.all_names)
+        }
+        fetchData()
     }, [])
 
 
