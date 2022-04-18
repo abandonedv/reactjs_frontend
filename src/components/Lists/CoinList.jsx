@@ -1,7 +1,7 @@
 import React from 'react';
-import PriceItem from "./PriceItem";
-import CoinItem from "./CoinItem";
-import classes from "./Item.module.css";
+import PriceItem from "../Items/PriceItem";
+import CoinItem from "../Items/CoinItem";
+import classes from "../Items/Item.module.css";
 
 const CoinList = (props) => {
     return (

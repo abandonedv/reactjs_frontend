@@ -1,5 +1,5 @@
 import React, {useEffect, useState, Fragment} from 'react';
-import PriceList from "../components/PriceList";
+import PriceList from "../components/Lists/PriceList";
 import MyRequest from "../api/requests";
 
 const CoinPage = () => {

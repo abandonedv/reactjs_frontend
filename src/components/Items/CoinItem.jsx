@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from "./Item.module.css";
-import MyButton from "./MyButton";
+import MyButton from "../Button/MyButton";
 import {useNavigate} from "react-router-dom";
 
 const CoinItem = (props) => {
