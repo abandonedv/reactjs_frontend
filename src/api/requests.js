@@ -17,5 +17,11 @@ export default class MyRequest {
         const response = await axios.get("http://127.0.0.1:8000/page", {params})
         return response.data
     }
+
+    static async getCoinHistory(coin_name) {
+
+        const response = await axios.get("http://127.0.0.1:8000/all_hist/" + coin_name)
+        return response.data
+    }
 }
 

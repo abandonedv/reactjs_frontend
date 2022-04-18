@@ -1,10 +1,8 @@
 import React from 'react';
 import {Route, Router, Switch, Routes} from "react-router-dom"
 import {AllowedUrls} from "../../url/allowed_urls";
-import MainPage from "../../Pages/MainPage";
 
 const AppRouter = () => {
-    console.log(AllowedUrls)
     return (
         <Routes>
         {AllowedUrls.map(my_route =>
