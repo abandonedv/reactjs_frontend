@@ -14,7 +14,18 @@ export default class MyRequest {
             n_rows: n_rows
         };
 
-        const response = await axios.get("http://127.0.0.1:8000/page", {params})
+        const response = await axios.get("http://127.0.0.1:8000/coin_page", {params})
+        return response.data
+    }
+
+    static async getNewsPage(page, n_rows) {
+
+        const params = {
+            page: page,
+            n_rows: n_rows
+        };
+
+        const response = await axios.get("http://127.0.0.1:8000/news_page", {params})
         return response.data
     }
 

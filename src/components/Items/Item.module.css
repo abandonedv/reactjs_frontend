@@ -6,3 +6,9 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.news_item {
+    padding: 15px;
+    border: 2px solid #6d8ddc;
+    margin-top: 15px;
+}
