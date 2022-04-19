@@ -4,7 +4,7 @@ import MyButton from "../Button/MyButton";
 
 const NewsItem = (props) => {
     return (
-        <div className={classes.news_item}>
+        <div className={classes.newsItem}>
             <p><b>Заголовок:</b> {props.news.news_title}</p>
             <hr style={{marginTop: 5, marginBottom: 5}}/>
             <p><b>Содержание:</b> {props.news.news_lead}</p>

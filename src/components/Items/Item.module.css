@@ -1,13 +1,4 @@
-.item {
-    display: flex;
-    padding: 15px;
-    border: 2px solid #6d8ddc;
-    margin-top: 15px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.news_item {
+.newsItem {
     padding: 15px;
     border: 2px solid #6d8ddc;
     margin-top: 15px;

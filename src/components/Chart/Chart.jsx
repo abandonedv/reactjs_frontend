@@ -37,47 +37,21 @@ const Chart = (props) => {
             // the event marker flags
         }, {
             type: 'flags',
-            data: [{
-                x: Date.UTC(2019, 11, 1),
-                title: 'A',
-                text: 'Some event with a description'
-            }, {
-                x: Date.UTC(2019, 11, 12),
-                title: 'B',
-                text: 'Some event with a description'
-            }, {
-                x: Date.UTC(2019, 11, 22),
-                title: 'C',
-                text: 'Some event with a description'
-            }, {
-                x: Date.UTC(2019, 11, 23),
-                title: 'A',
-                text: 'Some event with a description'
-            }, {
-                x: Date.UTC(2019, 11, 24),
-                title: 'A',
-                text: 'Some event with a description'
-            }, {
-                x: Date.UTC(2019, 11, 25),
-                title: 'gv5evwerevferfvweffrfverwvf',
-                text: 'Some event with a description'
-            }, {
-                x: Date.UTC(2019, 11, 1, 2),
-                title: 'gv5evwerevferfvweffrfverwvf',
-                text: 'Some event with a description'
-            }, {
-                x: Date.UTC(2019, 11, 1, 5),
-                title: 'A',
-                text: 'Some event with a description'
-            }],
+            data: [],
             onSeries: 'dataseries',
             shape: 'squarepin',
             width: 30
         }]
     };
 
+    options.series[1].data = [{
+        x: Date.UTC(2020, 11, 1, 2),
+        title: 'gv5evwerevferfvweffrfverwvf',
+        text: 'Some event with a description'
+    }]
+
     return (
-        <div className={classes.chart}>
+        <div className={classes.myChart}>
             <HighchartsReact
                 highcharts={Highcharts}
                 constructorType={'stockChart'}

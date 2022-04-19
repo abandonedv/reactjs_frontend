@@ -4,7 +4,7 @@ import classes from "./MyH.module.css";
 const MyH = ({coin_name}) => {
     return (
         <div>
-            <h1 className={classes.my_h}>{coin_name}</h1>
+            <h1 className={classes.myH}>{coin_name}</h1>
         </div>
     );
 };

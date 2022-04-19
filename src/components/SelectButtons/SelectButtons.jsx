@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from "./SelectButtons.module.css";
+import classes from "../MyDiv/MyDiv.module.css";
 import MyButton from "../Button/MyButton";
 
 const SelectButtons = ({changeList}) => {
     return (
-        <div className={classes.select}>
+        <div className={classes.myDiv}>
             <MyButton onClick = {() => changeList(0)}>
                 Цены
             </MyButton>
