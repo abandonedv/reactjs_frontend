@@ -6,6 +6,7 @@ import MyH from "../components/MyH/MyH";
 import Chart from "../components/Chart/Chart";
 import SelectButtons from "../components/SelectButtons/SelectButtons";
 import SearchInput from "../components/SearchInput/SearchInput";
+import NavigateBar from "../NavigateBar/NavigateBar";
 
 const CoinPage = () => {
     const [priceList, setPriceList] = useState([])
