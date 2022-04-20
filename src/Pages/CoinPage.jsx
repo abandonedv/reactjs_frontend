@@ -9,6 +9,7 @@ import SearchInput from "../components/SearchInput/SearchInput";
 import {default_options} from "../components/Chart/options";
 import {useContext} from "react";
 import {MyContext} from "../components/Context/Context";
+import SelectPage from "../components/SelectPage/SelectPage";
 
 const CoinPage = () => {
     const [priceList, setPriceList] = useState([]);
@@ -54,6 +55,15 @@ const CoinPage = () => {
         setFilteredNews([...newsList])
     }, [newsList])
 
+    useEffect(() => {
+        async function get_page() {
+            let new_news_page = await MyRequest.getNewsPage(newsPage, limit);
+            let news_list = new_news_page.news_list;
+            setNewsList([...news_list]);
+        }
+        get_page()
+    }, [newsPage])
+
     const changeList = (n_list) => {
         setSelectedList(n_list)
     }
@@ -98,6 +108,8 @@ const CoinPage = () => {
                 :
                 <PriceList price_list={priceList}/>
             }
+            <SelectPage set_news_page={setNewsPage}/>
+
         </div>
     );
 };
