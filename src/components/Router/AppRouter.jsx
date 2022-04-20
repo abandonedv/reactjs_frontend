@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Router, Switch, Routes} from "react-router-dom"
-import {AllowedUrls} from "../../url/allowed_urls";
+import {AllowedUrls} from "../../AllowedUrls/AllowedUrls";
 
 const AppRouter = () => {
     return (
