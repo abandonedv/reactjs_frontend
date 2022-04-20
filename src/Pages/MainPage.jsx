@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import MyRequest from "../api/requests";
+import MyRequest from "../api/Requests";
 import CoinList from "../components/Lists/CoinList";
 
 function MainPage() {

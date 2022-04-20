@@ -1,12 +1,12 @@
-import React, {useEffect, useState, Fragment, useMemo} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import PriceList from "../components/Lists/PriceList";
-import MyRequest from "../api/requests";
+import MyRequest from "../api/Requests";
 import NewsList from "../components/Lists/NewsList";
 import MyH from "../components/MyH/MyH";
 import Chart from "../components/Chart/Chart";
 import SelectButtons from "../components/SelectButtons/SelectButtons";
 import SearchInput from "../components/SearchInput/SearchInput";
-import {default_options} from "../components/Chart/options";
+import {default_options} from "../components/Chart/Options";
 import {useContext} from "react";
 import {MyContext} from "../components/Context/Context";
 import SelectPage from "../components/SelectPage/SelectPage";

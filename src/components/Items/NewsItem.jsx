@@ -7,7 +7,6 @@ const NewsItem = ({news}) => {
     const {selectedNews, setSelectedNews} = useContext(MyContext)
 
     function MyClick(e) {
-        console.log(news)
         setSelectedNews([...selectedNews, ...[news]])
         e.stopPropagation()
     }
