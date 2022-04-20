@@ -18,7 +18,7 @@ const CoinPage = () => {
     const [coinName, setCoinName] = useState("");
     const [searchStr, setSearchStr] = useState("");
     const [selectedList, setSelectedList] = useState(1);
-    const [limit, setLimit] = useState(50);
+    const [limit, setLimit] = useState(80);
     const [pricePage, setPricePage] = useState(1);
     const [newsPage, setNewsPage] = useState(300);
     const [newOptions, setNewOptions] = useState({});
@@ -64,24 +64,23 @@ const CoinPage = () => {
 
     useEffect(() => {
         let options = {...newOptions}
-        console.log(options)
-        console.log(selectedNews)
-
         if (selectedNews[0] !== undefined) {
-            let date_list = selectedNews[0].news_time.split("-")
-            options.series[1].data.push(
-                {
-                    x: Date.UTC(
-                        date_list[0],
-                        date_list[1],
-                        date_list[2],
-                        date_list[3],
-                        date_list[4],
-                        date_list[5]),
-                    title: selectedNews[0].news_title.slice(0, 10) + "...",
-                    text: selectedNews[0].news_title
-                })
-            console.log(options.series[1].data)
+            options.series[1].data = []
+            for (let news of selectedNews) {
+                let date_list = news.news_time.split("-")
+                options.series[1].data.push(
+                    {
+                        x: Date.UTC(
+                            date_list[0],
+                            date_list[1],
+                            date_list[2],
+                            date_list[3],
+                            date_list[4],
+                            date_list[5]),
+                        title: news.news_title.slice(0, 4),
+                        text: news.news_title
+                    })
+            }
             setNewOptions({...options})
         }
 
