@@ -12,14 +12,13 @@ const CoinPage = () => {
     const [priceList, setPriceList] = useState([])
     const [newsList, setNewsList] = useState([])
     const [filteredNews, setFilteredNews] = useState([])
-    const [selectedNews, setSelectedNews] = useState({})
     const [chartList, setChartList] = useState([])
     const [coinName, setCoinName] = useState("")
     const [searchStr, setSearchStr] = useState("")
     const [selectedList, setSelectedList] = useState(1)
-    const [limit, setLimit] = useState(30);
+    const [limit, setLimit] = useState(50);
     const [pricePage, setPricePage] = useState(1);
-    const [newsPage, setNewsPage] = useState(1);
+    const [newsPage, setNewsPage] = useState(300);
 
     useEffect(() => {
         async function fetchData() {
@@ -57,19 +56,12 @@ const CoinPage = () => {
     return (
         <div className="App">
             <MyH coin_name={coinName}/>
-            <Chart
-                chart_list={chartList}
-                selected_news={selectedNews}
-                set_selected_news={setSelectedNews}
-            />
+            <Chart chart_list={chartList}/>
             <SelectButtons changeList={changeList}/>
             <SearchInput search_str={searchStr} set_search_str={setSearchStr}/>
             {selectedList
                 ?
-                <NewsList
-                    news_list={filteredNews}
-                    selected_news={{value: selectedNews, set_news: setSelectedNews}}
-                />
+                <NewsList news_list={filteredNews}/>
                 :
                 <PriceList price_list={priceList}/>
             }

@@ -1,6 +1,5 @@
 import React from 'react';
 import PriceItem from "../Items/PriceItem";
-import Chart from "../Chart/Chart";
 
 const PriceList = (props) => {
     return (

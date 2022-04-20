@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import MyButton from "../components/Button/MyButton";
 import classes from "./NavigateBar.module.css";

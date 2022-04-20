@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import classes from "./Item.module.css";
 import MyButton from "../Button/MyButton";
+import {MyContext} from "../Context/Context";
 
-const NewsItem = ({news, selected_news}) => {
+const NewsItem = ({news}) => {
+    const {selectedNews, setSelectedNews} = useContext(MyContext)
+
+    function MyClick(e) {
+        setSelectedNews([news])
+        e.stopPropagation()
+    }
 
     return (
         <div className={classes.newsItem}>
@@ -13,7 +20,7 @@ const NewsItem = ({news, selected_news}) => {
             <p><b>Время:</b> {news.news_time}</p>
             <MyButton
                 style={{marginTop: 10}}
-                onClick={() => selected_news.set_news({...news})}
+                onClick={(e) => MyClick(e)}
             >Добавить</MyButton>
         </div>
     );
