@@ -15,6 +15,10 @@ export const default_options = {
     rangeSelector: {
 
         buttons: [{
+            type: 'hour',
+            count: 12,
+            text: '12h'
+        }, {
             type: 'day',
             count: 1,
             text: '1d'

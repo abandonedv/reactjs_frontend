@@ -21,7 +21,7 @@ const CoinPage = () => {
     const [selectedList, setSelectedList] = useState(1);
     const [limit, setLimit] = useState(80);
     const [pricePage, setPricePage] = useState(1);
-    const [newsPage, setNewsPage] = useState(300);
+    const [newsPage, setNewsPage] = useState(100);
     const [newOptions, setNewOptions] = useState({});
 
     const {selectedNews, setSelectedNews} = useContext(MyContext)
@@ -32,16 +32,12 @@ const CoinPage = () => {
             setCoinName(coin_name);
             let new_coin_page = await MyRequest.getCoinPage(coin_name, pricePage, limit);
             let chart_data = await MyRequest.getCoinHistory(coin_name);
-            let new_news_page = await MyRequest.getNewsPage(newsPage, limit);
 
             let coin_list = new_coin_page.history_list;
             setPriceList([...coin_list, ...priceList]);
 
             let chart_list = chart_data.history_list;
             setChartList([...chart_list]);
-
-            let news_list = new_news_page.news_list;
-            setNewsList([...news_list, ...newsList]);
 
             let options = {...default_options}
             options.series[0].data = chart_list
@@ -56,6 +52,7 @@ const CoinPage = () => {
     }, [newsList])
 
     useEffect(() => {
+        console.log(newsPage)
         async function get_page() {
             let new_news_page = await MyRequest.getNewsPage(newsPage, limit);
             let news_list = new_news_page.news_list;
