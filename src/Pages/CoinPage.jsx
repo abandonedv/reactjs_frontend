@@ -5,11 +5,9 @@ import NewsList from "../components/Lists/NewsList";
 import MyH from "../components/MyH/MyH";
 import Chart from "../components/Chart/Chart";
 import SelectButtons from "../components/SelectButtons/SelectButtons";
-import SearchInput from "../components/SearchInput/SearchInput";
 import {default_options} from "../components/Chart/Options";
 import {useContext} from "react";
 import {MyContext} from "../components/Context/Context";
-import SelectPage from "../components/SelectPage/SelectPage";
 
 const CoinPage = () => {
     const [priceList, setPriceList] = useState([]);
@@ -17,11 +15,12 @@ const CoinPage = () => {
     const [filteredNews, setFilteredNews] = useState([]);
     const [chartList, setChartList] = useState([]);
     const [coinName, setCoinName] = useState("");
-    const [searchStr, setSearchStr] = useState("");
+    const [searchNewsStr, setSearchNewsStr] = useState("");
     const [selectedList, setSelectedList] = useState(1);
-    const [limit, setLimit] = useState(80);
+    const [limit, setLimit] = useState(100);
     const [pricePage, setPricePage] = useState(1);
-    const [newsPage, setNewsPage] = useState(100);
+    const [newsPage, setNewsPage] = useState(1);
+    const [listType, setListType] = useState(1);
     const [newOptions, setNewOptions] = useState({});
 
     const {selectedNews, setSelectedNews} = useContext(MyContext)
@@ -30,11 +29,8 @@ const CoinPage = () => {
         async function fetchData() {
             let coin_name = window.location.pathname.split(":")[1];
             setCoinName(coin_name);
-            let new_coin_page = await MyRequest.getCoinPage(coin_name, pricePage, limit);
-            let chart_data = await MyRequest.getCoinHistory(coin_name);
 
-            let coin_list = new_coin_page.history_list;
-            setPriceList([...coin_list, ...priceList]);
+            let chart_data = await MyRequest.getCoinHistory(coin_name);
 
             let chart_list = chart_data.history_list;
             setChartList([...chart_list]);
@@ -51,8 +47,17 @@ const CoinPage = () => {
         setFilteredNews([...newsList])
     }, [newsList])
 
+
     useEffect(() => {
-        console.log(newsPage)
+        async function get_page() {
+            let new_coin_page = await MyRequest.getCoinPage(coinName, pricePage, limit);
+            let coin_list = new_coin_page.history_list;
+            setPriceList([...coin_list]);
+        }
+        get_page()
+    }, [pricePage, coinName])
+
+    useEffect(() => {
         async function get_page() {
             let new_news_page = await MyRequest.getNewsPage(newsPage, limit);
             let news_list = new_news_page.news_list;
@@ -66,8 +71,8 @@ const CoinPage = () => {
     }
 
     useMemo(() => {
-        setFilteredNews(newsList.filter(news => news.news_title.includes(searchStr)))
-    }, [searchStr])
+        setFilteredNews(newsList.filter(news => news.news_title.includes(searchNewsStr)))
+    }, [searchNewsStr])
 
     useEffect(() => {
         let options = {...newOptions}
@@ -77,13 +82,7 @@ const CoinPage = () => {
                 let date_list = news.news_time.split("-")
                 options.series[1].data.push(
                     {
-                        x: Date.UTC(
-                            date_list[0],
-                            date_list[1],
-                            date_list[2],
-                            date_list[3],
-                            date_list[4],
-                            date_list[5]),
+                        x: Date.UTC(...date_list),
                         title: news.news_title.slice(0, 4),
                         text: news.news_title
                     })
@@ -98,14 +97,20 @@ const CoinPage = () => {
             <MyH coin_name={coinName}/>
             <Chart new_options={newOptions}/>
             <SelectButtons changeList={changeList}/>
-            <SearchInput search_str={searchStr} set_search_str={setSearchStr}/>
-            {selectedList
-                ?
-                <NewsList news_list={filteredNews}/>
-                :
-                <PriceList price_list={priceList}/>
+            {selectedList === 1 &&
+                <NewsList news_list={filteredNews}
+                          news_page={newsPage}
+                          set_news_page={setNewsPage}
+                          search_str={searchNewsStr}
+                          set_search_str={setSearchNewsStr}
+                />
             }
-            <SelectPage set_news_page={setNewsPage}/>
+            {selectedList === 0 &&
+                <PriceList price_list={priceList}
+                           price_page={pricePage}
+                           set_price_page={setPricePage}
+                />
+            }
 
         </div>
     );

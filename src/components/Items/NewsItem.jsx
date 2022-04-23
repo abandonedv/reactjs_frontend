@@ -6,11 +6,6 @@ import {MyContext} from "../Context/Context";
 const NewsItem = ({news}) => {
     const {selectedNews, setSelectedNews} = useContext(MyContext)
 
-    function MyClick(e) {
-        setSelectedNews([...selectedNews, ...[news]])
-        e.stopPropagation()
-    }
-
     return (
         <div className={classes.newsItem}>
             <p><b>Заголовок:</b> {news.news_title}</p>
@@ -20,7 +15,7 @@ const NewsItem = ({news}) => {
             <p><b>Время:</b> {news.news_time}</p>
             <MyButton
                 style={{marginTop: 10}}
-                onClick={(e) => MyClick(e)}
+                onClick={(e) => setSelectedNews([...selectedNews, ...[news]])}
             >Добавить</MyButton>
         </div>
     );

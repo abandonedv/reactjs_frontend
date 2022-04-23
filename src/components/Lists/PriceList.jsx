@@ -1,13 +1,15 @@
 import React from 'react';
 import PriceItem from "../Items/PriceItem";
+import SelectPage from "../SelectPage/SelectPage";
 
-const PriceList = (props) => {
+const PriceList = ({price_list, price_page, set_price_page}) => {
     return (
         <div>
-            {props.price_list.map((item) =>
+            <SelectPage page={price_page} set_page={set_price_page}/>
+            {price_list.map((item) =>
             <PriceItem price={item} key={item.coin_time}></PriceItem>
             )}
-
+            <SelectPage page={price_page} set_page={set_price_page}/>
         </div>
     );
 };
