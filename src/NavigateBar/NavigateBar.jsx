@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import MyButton from "../components/Button/MyButton";
+import MyButton from "../Components/Button/MyButton";
 import classes from "./NavigateBar.module.css";
 
 const NavigateBar = () => {

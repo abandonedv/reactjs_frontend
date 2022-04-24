@@ -1,7 +1,7 @@
 import React from 'react';
 import MyButton from "../Button/MyButton";
 import classes from "../MyDiv/MyDiv.module.css";
-import GetArray from "../../My_functions/My_functions";
+import GetArray from "../../MyFunctions/My_functions";
 
 const SelectPage = (props) => {
     return (

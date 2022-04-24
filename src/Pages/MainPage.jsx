@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import MyRequest from "../api/Requests";
-import CoinList from "../components/Lists/CoinList";
+import MyRequest from "../API/Requests";
+import CoinList from "../Components/Lists/CoinList";
 
 function MainPage() {
     const [coinList, setCoinList] = useState([])
