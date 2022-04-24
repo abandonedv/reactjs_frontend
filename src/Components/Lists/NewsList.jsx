@@ -11,7 +11,7 @@ const NewsList = ({news_list, news_page, set_news_page, search_str, set_search_s
             {news_list.map((item) =>
                 <NewsItem
                     news={item}
-                    key={item.id}
+                    key={item.news_time}
                 />
             )}
             <SelectPage page={news_page} set_page={set_news_page}/>
