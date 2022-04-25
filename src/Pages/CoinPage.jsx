@@ -8,6 +8,7 @@ import SelectButtons from "../Components/SelectButtons/SelectButtons";
 import {default_options} from "../Components/Chart/Options";
 import {useContext} from "react";
 import {MyContext} from "../Components/Context/Context";
+import {FillOptions} from "../MyFunctions/MyFunctions";
 
 const CoinPage = () => {
     const [priceList, setPriceList] = useState([]);
@@ -75,24 +76,8 @@ const CoinPage = () => {
     }, [searchNewsStr])
 
     useEffect(() => {
-        let options = {...newOptions}
         if (selectedNews[0] !== undefined) {
-            options.series[1].data = []
-            for (let news of selectedNews) {
-                let date_list = news.news_time.split("-")
-                options.series[1].data.push(
-                    {
-                        x: Date.UTC(
-                            date_list[0],
-                            date_list[1] - 1,
-                            date_list[2],
-                            date_list[3],
-                            date_list[4],
-                            date_list[5]),
-                        title: news.news_title.slice(0, 4),
-                        text: news.news_title
-                    })
-            }
+            let options = FillOptions(selectedNews, newOptions)
             setNewOptions({...options})
         }
 
