@@ -4,7 +4,7 @@ import MyButton from "../Button/MyButton";
 import {MyContext} from "../Context/Context";
 
 const NewsItem = ({news}) => {
-    const {selectedNews, setSelectedNews} = useContext(MyContext)
+    const {selectedNews, setSelectedNews} = useContext(MyContext);
 
     return (
         <div className={classes.newsItem}>

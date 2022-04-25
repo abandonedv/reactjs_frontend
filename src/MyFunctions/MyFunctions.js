@@ -1,16 +1,16 @@
 export function GetArray(number) {
-    let arr = []
+    let arr = [];
     for (let i = number; i < number + 12; i++) {
-        arr.push(i)
+        arr.push(i);
     }
-    return arr
+    return arr;
 }
 
 export function FillOptions(selectedNews, newOptions) {
-    let options = {...newOptions}
-    options.series[1].data = []
+    let options = {...newOptions};
+    options.series[1].data = [];
     for (let news of selectedNews) {
-        let date_list = news.news_time.split("-")
+        let date_list = news.news_time.split("-");
         options.series[1].data.push(
             {
                 x: Date.UTC(
@@ -22,7 +22,7 @@ export function FillOptions(selectedNews, newOptions) {
                     date_list[5]),
                 title: news.news_title.slice(0, 4),
                 text: news.news_title
-            })
+            });
     }
-    return options
+    return options;
 }

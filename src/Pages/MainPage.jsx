@@ -3,14 +3,14 @@ import MyRequest from "../API/Requests";
 import CoinList from "../Components/Lists/CoinList";
 
 function MainPage() {
-    const [coinList, setCoinList] = useState([])
+    const [coinList, setCoinList] = useState([]);
 
     useEffect( () => {
         async function fetchData() {
-            let names = await MyRequest.getAllNames()
-            setCoinList(names.all_names)
+            let names = await MyRequest.getAllNames();
+            setCoinList(names.all_names);
         }
-        fetchData()
+        fetchData();
     }, [])
 
 

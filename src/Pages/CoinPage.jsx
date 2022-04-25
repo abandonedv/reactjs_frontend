@@ -23,7 +23,7 @@ const CoinPage = () => {
     const [newsPage, setNewsPage] = useState(5);
     const [newOptions, setNewOptions] = useState({});
 
-    const {selectedNews, setSelectedNews} = useContext(MyContext)
+    const {selectedNews, setSelectedNews} = useContext(MyContext);
 
     useEffect(() => {
         async function fetchData() {
@@ -34,17 +34,17 @@ const CoinPage = () => {
 
             let chart_list = chart_data.history_list;
 
-            let options = {...default_options}
-            options.series[0].data = chart_list
-            setNewOptions({...options})
+            let options = {...default_options};
+            options.series[0].data = chart_list;
+            setNewOptions({...options});
 
         }
         fetchData()
     }, [])
 
     useEffect(() => {
-        setFilteredNews([...newsList])
-    }, [newsList])
+        setFilteredNews([...newsList]);
+    }, [newsList]);
 
 
     useEffect(() => {
@@ -55,8 +55,8 @@ const CoinPage = () => {
                 setPriceList([...coin_list]);
             }
         }
-        get_page()
-    }, [pricePage, coinName])
+        get_page();
+    }, [pricePage, coinName]);
 
     useEffect(() => {
         async function get_page() {
@@ -64,24 +64,24 @@ const CoinPage = () => {
             let news_list = new_news_page.news_list;
             setNewsList([...news_list]);
         }
-        get_page()
-    }, [newsPage])
+        get_page();
+    }, [newsPage]);
 
     const changeList = (n_list) => {
-        setSelectedList(n_list)
+        setSelectedList(n_list);
     }
 
     useMemo(() => {
-        setFilteredNews(newsList.filter(news => news.news_title.includes(searchNewsStr)))
-    }, [searchNewsStr])
+        setFilteredNews(newsList.filter(news => news.news_title.includes(searchNewsStr)));
+    }, [searchNewsStr]);
 
     useEffect(() => {
         if (selectedNews[0] !== undefined) {
-            let options = FillOptions(selectedNews, newOptions)
-            setNewOptions({...options})
+            let options = FillOptions(selectedNews, newOptions);
+            setNewOptions({...options});
         }
 
-    }, [selectedNews])
+    }, [selectedNews]);
 
     return (
         <div className="App">

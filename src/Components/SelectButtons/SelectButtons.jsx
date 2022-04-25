@@ -6,10 +6,10 @@ const SelectButtons = ({changeList}) => {
 
     return (
         <div className={classes.myDiv}>
-            <MyButton onClick = {(e) => changeList(0)}>
+            <MyButton onClick = {() => changeList(0)}>
                 Цены
             </MyButton>
-            <MyButton onClick = {(e) => changeList(1)}>
+            <MyButton onClick = {() => changeList(1)}>
                 Новости
             </MyButton>
         </div>

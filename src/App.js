@@ -7,7 +7,7 @@ import {MyContext} from "./Components/Context/Context";
 import {useState} from "react";
 
 function App() {
-    const [selectedNews, setSelectedNews] = useState([])
+    const [selectedNews, setSelectedNews] = useState([]);
     return (
         <MyContext.Provider value = {{
             selectedNews,

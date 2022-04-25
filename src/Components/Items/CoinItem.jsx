@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import classes from "../MyDiv/MyDiv.module.css";
 
 const CoinItem = (props) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <div className={classes.myDiv}>

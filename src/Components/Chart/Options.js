@@ -67,4 +67,4 @@ export const default_options = {
         onSeries: 'dataseries',
         shape: 'squarepin'
     }]
-}
+};

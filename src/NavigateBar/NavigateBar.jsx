@@ -6,13 +6,11 @@ import classes from "./NavigateBar.module.css";
 const NavigateBar = () => {
     return (
         <div className={classes.navigateBar}>
-            <div>
-                <Link to="/">
-                    <MyButton>
-                        Криптовалюты
-                    </MyButton>
-                </Link>
-            </div>
+            <Link to="/">
+                <MyButton>
+                    Криптовалюты
+                </MyButton>
+            </Link>
         </div>
     );
 };

@@ -7,9 +7,7 @@ const SelectPage = (props) => {
     return (
         <div className={classes.myDiv}>
             {GetArray(props.page).map((item) =>
-            <MyButton onClick={() => props.set_page(item)}
-                      key={item}
-            >
+            <MyButton onClick={() => props.set_page(item)} key={item}>
                 {item}
             </MyButton>)}
         </div>
