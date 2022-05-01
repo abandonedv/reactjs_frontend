@@ -46,7 +46,7 @@ export const default_options = {
             type: 'all',
             text: 'All'
         }],
-        selected: 3
+        selected: 0
     },
 
     yAxis: {

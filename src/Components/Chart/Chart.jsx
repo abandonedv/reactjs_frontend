@@ -4,7 +4,6 @@ import HighchartsReact from 'highcharts-react-official';
 import classes from "./Chart.module.css";
 
 const Chart = ({new_options}) => {
-
     return (
         <div className={classes.myChart}>
             <HighchartsReact

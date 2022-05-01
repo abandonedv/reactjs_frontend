@@ -3,7 +3,7 @@ import axios from "axios";
 export default class MyRequest {
 
     static async getAllNames() {
-        const response = await axios.get("http://127.0.0.1:8000/");
+        const response = await axios.get("http://localhost/");
         return response.data;
     }
 
@@ -15,7 +15,7 @@ export default class MyRequest {
             n_rows: n_rows
         };
 
-        const response = await axios.get("http://127.0.0.1:8000/coin_page", {params});
+        const response = await axios.get("http://localhost/coin_page", {params});
         return response.data;
     }
 
@@ -26,13 +26,13 @@ export default class MyRequest {
             n_rows: n_rows
         };
 
-        const response = await axios.get("http://127.0.0.1:8000/news_page", {params});
+        const response = await axios.get("http://localhost/news_page", {params});
         return response.data;
     }
 
     static async getCoinHistory(coin_name) {
 
-        const response = await axios.get("http://127.0.0.1:8000/all_hist/" + coin_name);
+        const response = await axios.get("http://localhost/all_hist/" + coin_name);
         return response.data;
     }
 }
