@@ -45,8 +45,7 @@ export const default_options = {
         }, {
             type: 'all',
             text: 'All'
-        }],
-        selected: 0
+        }]
     },
 
     yAxis: {

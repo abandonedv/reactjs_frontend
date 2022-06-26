@@ -9,6 +9,7 @@ export function GetArray(number) {
 export function FillOptions(selectedNews, newOptions) {
     let options = {...newOptions};
     options.series[1].data = [];
+    options.rangeSelector.selected = 1;
     for (let news of selectedNews) {
         let date_list = news.news_time.split("-");
         options.series[1].data.push(

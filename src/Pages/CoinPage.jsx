@@ -20,7 +20,7 @@ const CoinPage = () => {
     const [selectedList, setSelectedList] = useState(1);
     const [limit, setLimit] = useState(100);
     const [pricePage, setPricePage] = useState(1);
-    const [newsPage, setNewsPage] = useState(5);
+    const [newsPage, setNewsPage] = useState(1);
     const [newOptions, setNewOptions] = useState({});
 
     const {selectedNews, setSelectedNews} = useContext(MyContext);
