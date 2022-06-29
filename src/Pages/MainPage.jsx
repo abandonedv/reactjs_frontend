@@ -5,6 +5,7 @@ import CoinList from "../Components/Lists/CoinList";
 function MainPage() {
     const [coinList, setCoinList] = useState([]);
 
+    // хук используемый для хранения подгруженного списка криптовалют
     useEffect( () => {
         async function fetchData() {
             let names = await MyRequest.getAllNames();

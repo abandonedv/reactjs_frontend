@@ -11,20 +11,41 @@ import {MyContext} from "../Components/Context/Context";
 import {FillOptions} from "../MyFunctions/MyFunctions";
 
 const CoinPage = () => {
+    // коллекция хранящая цены полученные через request
     const [priceList, setPriceList] = useState([]);
+
+    // коллекция хранящая новости полученные через request
     const [newsList, setNewsList] = useState([]);
+
+    // коллекция хранящая отфильтрованные новости
     const [filteredNews, setFilteredNews] = useState([]);
     // const [chartList, setChartList] = useState([]);
+
+    // строка хранящая имя криптовалюты
     const [coinName, setCoinName] = useState("");
+
+    // строка хранящая введенную строку через input
     const [searchNewsStr, setSearchNewsStr] = useState("");
+
+    // число используемое для условного рендеринга
     const [selectedList, setSelectedList] = useState(1);
+
+    // число используемое для установки лимита запрашиваемы данных
     const [limit, setLimit] = useState(100);
+
+    // число используемое для установки номера страницы списка цен
     const [pricePage, setPricePage] = useState(1);
+
+    // число используемое для установки номера страницы списка новостей
     const [newsPage, setNewsPage] = useState(1);
+
+    // объект используемый для хранения выбранных новостей, отображенных на графике
     const [newOptions, setNewOptions] = useState({});
 
+    // коллекция хранящая выбранные новости
     const {selectedNews, setSelectedNews} = useContext(MyContext);
 
+    // хук используемый для хранения подгруженных данных на график при загрузке страницы
     useEffect(() => {
         async function fetchData() {
             let coin_name = window.location.pathname.split(":")[1];
@@ -42,11 +63,7 @@ const CoinPage = () => {
         fetchData()
     }, [])
 
-    useEffect(() => {
-        setFilteredNews([...newsList]);
-    }, [newsList]);
-
-
+    // хук используемый для хранения подгруженных цен при загрузке страницы
     useEffect(() => {
         async function get_page() {
             if (coinName) {
@@ -58,6 +75,7 @@ const CoinPage = () => {
         get_page();
     }, [pricePage, coinName]);
 
+    // хук используемый для хранения подгруженных новостей при загрузке страницы
     useEffect(() => {
         async function get_page() {
             let new_news_page = await MyRequest.getNewsPage(newsPage, limit);
@@ -67,14 +85,23 @@ const CoinPage = () => {
         get_page();
     }, [newsPage]);
 
+
+    // хук используемый для хранения списка новостей котрорый будет отображен непосредственно на странице
+    useEffect(() => {
+        setFilteredNews([...newsList]);
+    }, [newsList]);
+
+    // callback - функция
     const changeList = (n_list) => {
         setSelectedList(n_list);
     }
 
+    // хук используемый для кеширования данных о новостях
     useMemo(() => {
         setFilteredNews(newsList.filter(news => news.news_title.includes(searchNewsStr)));
     }, [searchNewsStr]);
 
+    // хук используемый для хранения новостей отображаемых на графике
     useEffect(() => {
         if (selectedNews[0] !== undefined) {
             let options = FillOptions(selectedNews, newOptions);
