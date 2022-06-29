@@ -1,4 +1,4 @@
-FROM node:13.12.0-alpine
+FROM node:16.15.1-alpine
 
 WORKDIR /usr/src/docker-react-sample
 
